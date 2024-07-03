@@ -1,0 +1,41 @@
+{% extends 'html/index.html' %}
+{% block title %}
+    Language
+{% endblock %}
+
+
+{% block primer %}
+{% for item in primer %}
+    <a href="{% url 'language'%}/{{item}}">{{item}}</a>
+{% endfor %}
+{% endblock %}
+
+{% block basic %}
+<div style="margin-left: 50px;">
+    <h1>Список языков</h1>
+    {% for item in masiv %}
+        <h1><a href="{% url 'language' %}/{{item}}" >{{item}}</a></h1>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+{% block paginator %}
+    <div class="pagination">
+    <span class="step-links">
+        {% if masiv.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ masiv.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ masiv.number }} of {{ masiv.paginator.num_pages }}.
+        </span>
+
+        {% if masiv.has_next %}
+            <a href="?page={{ masiv.next_page_number }}">next</a>
+            <a href="?page={{ masiv.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
