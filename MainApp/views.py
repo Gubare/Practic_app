@@ -1,20 +1,18 @@
 import os.path
 
+
 from django.core.paginator import Paginator
 from django.shortcuts import render
 import json
 
-json_path = '/home/artic/Denis/country-json1/country-by-languages.json'
-if os.path.isfile(json_path):
-    with open('/home/artic/Denis/country-json1/country-by-languages.json') as file:
-        country_bd = json.load(file)
-else:
-    with open('/app/country-json1/country-by-languages.json') as file:
-        country_bd = json.load(file)
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+json_path = os.path.join(current_dir, 'country-by-languages.json')
+with open(json_path) as json_file:
+    country_bd = json.load(json_file)
 
 
-
-primer = 'A B C D E F G H I J K L M N O P Q R S T U V W X Y'
+primer = 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'
 
 
 def iam(request):
