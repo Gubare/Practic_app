@@ -3,7 +3,7 @@
 FROM python:3-slim
 #Ставим гит
 RUN apt-get update && apt-get install -y git
-#test
+
 
 # Устанавливаем рабочую директорию в контейнере
 WORKDIR /app
