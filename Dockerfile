@@ -21,4 +21,3 @@ EXPOSE 8000
 # Запускаем Django сервер
 # docker run -it -p 8000:8001 IMAGE_ID <--- запускать так
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8001"]
-
