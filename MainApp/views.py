@@ -10,7 +10,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 json_base_path = os.path.join(current_dir, 'country-by-languages.json')
 with open(json_base_path) as json_file:
     country_bd = json.load(json_file)
-
+# кодировка ЮТФ-8, тк в джисоне есть русские слова
 json_info_path = os.path.join(current_dir, 'country_info.json')
 with open(json_info_path, encoding="UTF-8") as json_info:
     info_db = json.load(json_info)
