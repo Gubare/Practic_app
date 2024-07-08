@@ -1,5 +1,5 @@
 import os.path
-
+import random
 
 from django.core.paginator import Paginator
 from django.shortcuts import render
@@ -7,16 +7,29 @@ import json
 
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-json_path = os.path.join(current_dir, 'country-by-languages.json')
-with open(json_path) as json_file:
+json_base_path = os.path.join(current_dir, 'country-by-languages.json')
+with open(json_base_path) as json_file:
     country_bd = json.load(json_file)
+
+json_info_path = os.path.join(current_dir, 'country_info.json')
+with open(json_info_path, encoding="UTF-8") as json_info:
+    info_db = json.load(json_info)
 
 
 primer = 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'
 
 
 def iam(request):
-    return render(request, 'html/iam.html')
+    country_list = []
+    for unit in info_db:
+        country_list.append(unit['name'])
+    main_unit = random.choice(country_list)
+    for info in info_db:
+        if main_unit == info['name']:
+            full_name = info['english']
+            short_name = info['alpha2'].lower
+    return render(request, 'html/iam.html',
+                  {"unit": main_unit, "short": short_name, "full": full_name})
 
 
 def country(request):
