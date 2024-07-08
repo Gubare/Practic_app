@@ -76,6 +76,19 @@
 
 .show {display: block;}
 </style>
+<style>
+    body {background: linear-gradient(270deg, #bcf5ae, #aee4f5);
+    background-size: 400% 400%;
+    animation: AnimationName 9s ease infinite;
+    }
+
+    @keyframes AnimationName {
+        0%{background-position:27% 0%}
+        50%{background-position:74% 100%}
+        100%{background-position:27% 0%}
+    }
+</style>
+
 </head>
 <body>
 <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -101,13 +114,12 @@
   </div>
 </div>
 <script>
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
+// Закрыть список, если было нажатие не по нему
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
 
