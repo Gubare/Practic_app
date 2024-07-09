@@ -2,43 +2,44 @@
 {% block title %}
     {{last}}
 {% endblock %}
-
+{% load static %}
 
 {% block basic %}
-<div style="margin-left: 100px;">
-    <h2>список языков, на которых говорят в стране</h2>
-    <h1><strong>{{last}}</strong></h1>
-    {% for item in masiv %}
-    <h3>{{item}}</h3>
-    {% endfor %}
+<style>
+        .container {
+            display: flex;
+        }
 
+        .text {
+            flex: 1;
+            padding: 10px;
+        }
 
-<div class="icon-bar">
-  <a class="active" href="{% url 'iam' %}"><i class="fa fa-home"></i></a>
-  <a href="{% url 'country' %}"><i class="fa fa-search"></i></a>
-  <a href="https://www.google.ru/maps/place/{{last}}"><i class="fa fa-globe"></i></a>
+        .image {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+
+<div class="container">
+        <div class="text">
+            <h2>список языков, на которых говорят в стране</h2>
+            <h1><strong>{{last}}</strong></h1>
+            {% for item in masiv %}
+            <h3>{{item}}</h3>
+            {% endfor %}
+            <div class="icon-bar">
+              <a class="active" href="{% url 'iam' %}"><i class="fa fa-home"></i></a>
+              <a href="{% url 'country' %}"><i class="fa fa-search"></i></a>
+              <a href="https://www.google.ru/maps/place/{{last}}"><i class="fa fa-globe"></i></a>
+            </div>
+        </div>
+    <div class="image">
+            <img class="w-50 mx-auto d-block" src="{% static '' %}{{link}}.webp" alt="photo">
+    </div>
 </div>
-
-
-<!--    <a href="https://www.google.ru/maps/place/{{last}}"> Показать страну на карте</a>-->
-<!--    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">-->
-<!--  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>-->
-<!--</svg>-->
-<!--    <br>-->
-<!--    <a href="{% url 'country' %}">К списку стран</a>-->
-<!--    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">-->
-<!--  <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708z"/>-->
-<!--</svg>-->
-</div>
-<div id="google_translate_element"></div>
-
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-}
-</script>
-
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+<footer>
+</footer>
 {% endblock %}
 

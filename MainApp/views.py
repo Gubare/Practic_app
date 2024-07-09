@@ -67,7 +67,13 @@ def country_max(request, id):
                 masiv = item['languages']
                 last = item['country']
                 break
-        return render(request, 'html/country_max.html', {'masiv': masiv, 'primer': primer, 'last': last})
+
+        for unit in info_db:
+            if last == unit['english']:
+                link = unit['alpha2'].lower()
+                break
+        return render(request, 'html/country_max.html',
+                      {'masiv': masiv, 'primer': primer, 'last': last, 'link': link})
     else:
         for item in country_bd:
             if item['country'][0] == id:
