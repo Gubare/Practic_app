@@ -1,6 +1,6 @@
 import os.path
 import random
-
+import webbrowser
 from django.core.paginator import Paginator
 from django.shortcuts import render
 import json
@@ -27,9 +27,13 @@ def iam(request):
     for info in info_db:
         if main_unit == info['name']:
             full_name = info['english']
-            short_name = info['alpha2'].lower
+            short_name = info['alpha2'].lower()
+
+    flag_path = os.path.join(current_dir, f'static\\{short_name}.webp')
+    # os.startfile(flag_path)
+    # webbrowser.open(current_dir, f'static/{short_name}')
     return render(request, 'html/iam.html',
-                  {"unit": main_unit, "short": short_name, "full": full_name})
+                  {"unit": main_unit, "short": short_name, "full": full_name, "link": flag_path})
 
 
 def country(request):
