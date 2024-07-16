@@ -1,0 +1,25 @@
+{% extends 'html/index.html' %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block basic %}
+<div>
+    <h1>Страны и языки мира.</h1>
+    <h2>{{unit}}</h2><br>
+    <h2>{{full}}</h2>
+
+    <div class = "center">
+        <img class="w-50 mx-auto d-block" src="{% static '' %}{{short}}.webp" alt="photo">
+<!--        <img class = "center_container" src="https://flagpedia.net/data/flags/w702/{{short}}.webp" alt="">-->
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block paginator %}
+
+{% endblock %}

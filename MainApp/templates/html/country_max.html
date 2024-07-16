@@ -1,0 +1,45 @@
+{% extends 'html/index.html' %}
+{% block title %}
+    {{last}}
+{% endblock %}
+{% load static %}
+
+{% block basic %}
+<style>
+        .container {
+            display: flex;
+        }
+
+        .text {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .image {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+
+<div class="container">
+        <div class="text">
+            <h2>список языков, на которых говорят в стране</h2>
+            <h1><strong>{{last}}</strong></h1>
+            {% for item in masiv %}
+            <h3>{{item}}</h3>
+            {% endfor %}
+            <div class="icon-bar">
+              <a class="active" href="{% url 'iam' %}"><i class="fa fa-home"></i></a>
+              <a href="{% url 'country' %}"><i class="fa fa-search"></i></a>
+              <a href="https://www.google.ru/maps/place/{{last}}"><i class="fa fa-globe"></i></a>
+            </div>
+        </div>
+    <div class="image">
+            <img class="w-50 mx-auto d-block" src="{% static '' %}{{link}}.webp" alt="photo">
+    </div>
+</div>
+<footer>
+</footer>
+{% endblock %}
+
